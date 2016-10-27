@@ -13,10 +13,9 @@ ENV VIRTUAL_ENV /env
 ENV PATH /env/bin:$PATH
 
 ADD requirements.txt /app/
+RUN pip install Cython==0.25
 RUN pip install -r requirements.txt
 ADD . /app/
-
-RUN pip install fasttext==0.8.0
 
 CMD gunicorn -b :$PORT main:app
 # [END dockerfile]
